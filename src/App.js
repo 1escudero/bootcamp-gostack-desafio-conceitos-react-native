@@ -24,8 +24,13 @@ export default function App() {
 
   async function handleLikeRepository(id) {
     const response = await api.post(`/repositories/${id}/like`);
-    setRepositories(response.data)
-  }
+    console.log(response.data)
+
+    const newArray = repositories.map(repository => { 
+      return repository.id == id ? repository = response.data : repository })
+      setRepositories(newArray)
+    }
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
